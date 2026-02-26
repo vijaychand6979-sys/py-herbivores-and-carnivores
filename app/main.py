@@ -1,10 +1,14 @@
 from __future__ import annotations
+from typing import List
 
 
 class Animal:
-    alive = []
+    alive: List[Animal] = []
 
-    def __init__(self, name: str, health: int = 100) -> None:
+    def __init__(self,
+                 name: str,
+                 health: int = 100) -> None:
+
         self.health = health
         self.name = name
         self.hidden = False
@@ -14,10 +18,7 @@ class Animal:
         self.health = max(0, self.health - health)
 
         if self.health == 0:
-            for i in range(len(Animal.alive)):
-                if Animal.alive[i] == self:
-                    Animal.alive.pop(i)
-                    return
+            Animal.alive.remove(self)
 
     def __repr__(self) -> str:
         return (
