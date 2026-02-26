@@ -19,6 +19,11 @@ class Animal:
                     Animal.alive.pop(i)
                     return
 
+    def __repr__(self) -> str:
+        return (
+            f"{{Name: {self.name}, Health: {self.health}, Hidden: {self.hidden}}}"
+        )
+
 
 class Herbivore(Animal):
     def hide(self) -> None:
